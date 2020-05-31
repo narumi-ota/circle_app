@@ -21,4 +21,10 @@ class TodosController extends Controller
         $todo->delete();
         return redirect()->back();
     }
+
+    public function showEditForm(int $id, int $todo_id){
+        $task = Task::find($todo_id);
+
+        return view('todos/edit', ['todo' => $todo,]);
+    }
 }

@@ -3,6 +3,7 @@
 @section('title','Users')
 
 @section('content')
+    <h1>Users</h1>
     <ul>
       @forelse ($users as $user)
       <li>
