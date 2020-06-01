@@ -17,14 +17,19 @@ class TodosController extends Controller
         return redirect()-> action('PostsController@show', $post);
     }
 
-    public function destroy(Post $post, Todo $todo){
+    public function destroy(Todo $todo, Request $request){
         $todo->delete();
         return redirect()->back();
     }
 
-    public function showEditForm(int $id, int $todo_id){
-        $task = Task::find($todo_id);
+    public function change(Todo $todo, Request $request){
+      if($todo->status == '未着手') {
+        $todo->status = '進行中';
+      }elseif ($todo->status == '進行中') {
+        $todo->status = '完了済み';
+      }
+      $todo->save();
 
-        return view('todos/edit', ['todo' => $todo,]);
+      return redirect()->action('PostsController@show', ['id' => $request->post_id]);
     }
 }
