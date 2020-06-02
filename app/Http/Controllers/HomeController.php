@@ -39,7 +39,7 @@ class HomeController extends Controller
     }
 
     public function store(HomeRequest $request){
-        $request->photo->storeAs('/', Auth::id() . '.jpg');
+        $request->photo->putFile('/', Auth::id() . '.jpg');
         return redirect('home')->with('success', '新しいプロフィールを登録しました');
     }
 }
