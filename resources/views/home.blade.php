@@ -40,6 +40,7 @@
                 <input type="file" name="image">
                 <input type="submit">
                 </form>
+
             </div>
         </div>
     </div>
@@ -48,7 +49,6 @@
         <div class="post_card_header">{{ $user->name }} のサークル</div>
             <div class="post_card_textbox">
             @forelse ($posts as $post)
-            
             <ul>
                 <li>
                   <a href="{{ action('PostsController@show',$post) }}">{{ $post->title }}</a>
