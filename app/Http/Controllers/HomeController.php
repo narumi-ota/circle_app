@@ -32,14 +32,14 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc') 
             ->paginate(3); 
         $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+        if (Storage::disk('s3')->exists('/' . Auth::id() . '.jpg')) {
             $is_image = true;
         }
         return view('home')->with(['posts'=>$posts, 'user'=>$user, 'is_image' => $is_image]);
     }
 
     public function store(HomeRequest $request){
-        $request->photo->storeAs('public/profile_images', Auth::id() . '.jpg');
+        $request->photo->storeAs('/', Auth::id() . '.jpg');
         return redirect('home')->with('success', '新しいプロフィールを登録しました');
     }
 }
