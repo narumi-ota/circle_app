@@ -34,7 +34,7 @@
     </p>
 
     <p>
-      <input type="submit" value="Update">
+      <input type="submit" value="保存">
     </p>
 
 @endsection
