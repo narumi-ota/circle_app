@@ -31,15 +31,15 @@ class HomeController extends Controller
         $posts = Post::where('user_id', $user->id) 
             ->orderBy('created_at', 'desc') 
             ->paginate(3); 
-        $is_image = false;
-        if (Storage::disk('s3')->exists('/prof' . Auth::id() . '.jpg')) {
-            $is_image = true;
-        }
-        return view('home')->with(['posts'=>$posts, 'user'=>$user, 'is_image' => $is_image]);
+        return view('home')->with(['posts'=>$posts, 'user'=>$user]);
     }
 
     public function store(HomeRequest $request){
-        $request->photo->storeAs('/prof', Auth::id() . '.jpg');
+        $user = Auth::user();
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+        $user->image_path = Storage::disk('s3')->url($path);
+        $user->save();
         return redirect('home')->with('success', '新しいプロフィールを登録しました');
     }
 }

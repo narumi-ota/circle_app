@@ -6,9 +6,9 @@
         <div class="post_card_header">{{ $user->name }} のプロフィール</div>
             <div class="post_card_textbox">
         
-                @if ($is_image)
+                @if ($user->image_path)
                 <figure>
-                    <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="100px" height="100px">
+                    <img src="{{ $user->image_path }}" width="100px" height="100px">
                     <figcaption>現在のプロフィール画像</figcaption>
                 </figure>
                 @endif
