@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Join extends Model
 {
+    protected $fillable = ['status'];
 
-    protected $fillable = ['content'];
-    
     public function post(){
         return $this->belongsTo('App\Post');
     }
