@@ -41,7 +41,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->save();
-        return redirect('/posts');
+        return redirect('/home');
     }
 
     public function destroy(Post $post){
