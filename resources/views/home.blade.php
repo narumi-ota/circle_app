@@ -37,7 +37,7 @@
                 
                 <form method="POST" action="/home" enctype="multipart/form-data" >
                     {{ csrf_field() }}
-                <input type="file" name="photo">
+                <input type="file" name="image">
                 <input type="submit">
                 </form>
             </div>
