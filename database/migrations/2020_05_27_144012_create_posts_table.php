@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('place');
             $table->text('content');
+            $table->float('longitude');
+            $table->float('latitude');
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
