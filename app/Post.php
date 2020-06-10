@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
-    protected $fillable = ['title','content','place'] ;
+    protected $fillable = ['title','content','place','longitude','latitude'];
 
     public function todos(){
         return $this->hasMany('App\Todo');

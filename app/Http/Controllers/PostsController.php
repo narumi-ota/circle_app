@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 use Request as SearchRequest;
 
 class PostsController extends Controller
@@ -28,6 +29,8 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->place = $request->place;
         $post->content = $request->content;
+        $post->longitude = $request->longitude;
+        $post->latitude = $request->latitude;
         $post->user_id = $request->user()->id;
         $post->save();
         return redirect('/posts');

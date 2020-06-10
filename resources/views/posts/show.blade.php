@@ -6,12 +6,19 @@
 
 <h1><a href="{{ url('/posts') }}" class="header-menu"><< 一覧へ戻る</a></h1>
   
-        <div class="box">
+    <div class="box">
         <span class="box-title">
         {{ $post->title }}
         </span>
-        <p>開催場所：{{ $post->place }}</p>
+    
+
         <p>活動内容：{!! nl2br($post->content) !!}</p>
+    </div>
+
+    <div class="box">
+        <p>開催場所：{{ $post->place }}</p>
+        <p>地図：</p>
+        <div id="target"></div>
     </div>
 
     <div class="box">
@@ -129,4 +136,28 @@
       </form>
   </div>
 
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?language=ja&
+    reagion=JP&key={{ config('app.google_api') }}&callback=initMap">
+    </script>
+  
+    <script>
+      function initMap(){
+      'use strict';
+      var target = document.getElementById('target');
+      var map;
+      var spot = {lat: {{ $post->latitude }}, lng: {{ $post->longitude }}};
+      var marker;
+  
+      map = new google.maps.Map(target,{
+           center: spot,
+           zoom: 18,
+      });
+       
+      var marker = new google.maps.Marker({
+            position: spot,
+            map: map,
+       });
+      }
+    </script>
 @endsection

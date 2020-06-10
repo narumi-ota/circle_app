@@ -122,3 +122,10 @@ h1 {
   float: right;
 }
 
+/* Google map */
+
+#target {
+  width: 350px;
+  height: 200px;
+  margin-bottom: 20px;
+}

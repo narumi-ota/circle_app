@@ -60,7 +60,7 @@
                 </li>
             </ul>
             @empty
-            <ll>No Posts yet</li>
+            <ll>立ち上げたサークルはまだありません</li>
             @endforelse
             <div class="justify-content-center mb-5">
                 {{ $posts->links() }}
