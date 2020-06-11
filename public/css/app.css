@@ -130,7 +130,7 @@ h1 {
 /* Google map */
 
 #target {
-  width: 350px;
-  height: 200px;
-  margin-bottom: 20px;
+  max-width: 900px;
+  height: 300px;
+  margin: auto;
 }

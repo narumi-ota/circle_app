@@ -15,8 +15,6 @@
       <input type="submit" value="サークルを立ち上げる" class="btn btn-info">
     </p>
 
-    
-
     <p>サークル名：</p>
       <input type="text" name="title" placeholder="サークル名を入力してください" value="{{ old('title') }}">
       @if ($errors->has('title'))
