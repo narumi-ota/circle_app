@@ -71,7 +71,7 @@
         <form method="post" action="{{ action('TodosController@store', $post) }}">
             {{ csrf_field() }}
             <p>タスク：
-                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old    ('content') }}">
+                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old    ('content') }}" style="width:350px;">
                 @if ($errors->has('content'))
                 <span class="error">{{ $errors->first('content') }}</span>
                 @endif
@@ -124,7 +124,7 @@
       <form method="post" action="{{ action('CommentsController@store', $post) }}">
           {{ csrf_field() }}
           <p>
-            <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}  ">
+            <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}  " style="width:350px;">
             @if ($errors->has('content'))
             <span class="error">{{ $errors->first('content') }}</span>
             @endif
