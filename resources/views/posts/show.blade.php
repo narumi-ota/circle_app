@@ -113,8 +113,8 @@
             <tr>
                 <td>{{ $comment->content }}</td>
                 <td>{{ $comment->created_at->format('Y-m-d') }}</td>
-                <td>{{ $comment->user->name }}</td>
-            </tr>      
+                <td><a href="{{ action('UsersController@show',$comment->user) }}"><img src="{{ $comment->user->image_path }}" class="comment_user_icon"></a></td>
+            </tr>
           @empty
           <td>コメントはまだありません</td>
           @endforelse

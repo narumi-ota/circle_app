@@ -10,7 +10,7 @@
         <p>サークル名もしくは開催場所で検索</p>
     	  {{ Form::open(['method' => 'GET']) }}
     	  {{ Form::input('検索する', 'q', null) }}
-        {{ Form::submit('検索') }}
+          {{ Form::submit('検索') }}
     	  {{ Form::close() }}
     </div>
 
