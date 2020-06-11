@@ -12,7 +12,7 @@
         </span>
     
 
-        <p>活動内容：{!! nl2br($post->content) !!}</p>
+        <p>活動内容：<br>{!! nl2br($post->content) !!}</p>
     </div>
 
     <div class="box">
