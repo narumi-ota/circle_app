@@ -11,7 +11,6 @@
         {{ $post->title }}
         </span>
     
-
         <p>活動内容：<br>{!! nl2br($post->content) !!}</p>
     </div>
 

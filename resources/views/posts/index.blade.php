@@ -19,15 +19,15 @@
         <li>
             <div class="post_card">
                 <div class="post_card_header">
-                    {{ $post->title }}
+                    {{ mb_strimwidth($post->title, 0, 24, "...") }}
                 </div>
                 <div class="post_card_textbox">
                     <div class="user_icon">
                     <img src="{{ $post->user->image_path }}" width="100px" height="100px">
                     </div>
                     <p>主催者： <a href="{{ action('UsersController@show',$post->user) }}">{{    $post->user->name }}  </a></p>
-                    <p>開催場所：{{ $post->place }}</p>
-                    <p>活動内容：{{ $post->content }}</p>
+                    <p>開催場所：{{ mb_strimwidth($post->place, 0, 20, "...") }}</p>
+                    <p>活動内容：{{ mb_strimwidth($post->content, 0, 50, "...") }}</p>
                     <a href="{{ action('PostsController@show',$post) }}">詳しくみる</a>
                 </div>
             </div>
