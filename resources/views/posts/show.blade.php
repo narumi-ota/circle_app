@@ -22,7 +22,32 @@
     </div>
 
     <div class="box">
-        <span class="tbl-r03">Todo</span>
+        <span class="box-title">Todo</span>
+
+        <form method="post" action="{{ action('TodosController@store', $post) }}">
+            {{ csrf_field() }}
+            <p>タスク
+                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old    ('content') }}" style="width:350px;">
+                @if ($errors->has('content'))
+                <span class="error">{{ $errors->first('content') }}</span>
+                @endif
+            </p>
+
+            <p>期日
+                <input type="date" name="due_date" value="{{ old('due_date') }}">
+                @if ($errors->has('due_date'))
+                <span class="error">{{ $errors->first('due_date') }}</span>
+                @endif
+
+                <select name="status" placeholder="enter status" value="{{ old('status') }}">
+                    <option value=未着手>未着手</option>
+                    <option value=進行中>進行中</option>
+                    <option value=完了済み>完了済み</option>
+                </select>
+
+                <input type="submit" class="btn btn-info" value="Todoを追加">
+            </p>
+        
         <table class="table">
             <thead>
                 <tr>
@@ -35,7 +60,7 @@
             </thead>
 
             <tbody>
-                @forelse ($post->todos as $todo)
+                @forelse ($todo as $todo)
                 <tr>
                     <th>{{ $todo->content }}</th>
                     <td>{{ $todo->status }}</td>
@@ -66,38 +91,22 @@
             </tbody>
         </table>
 
-        <p>【Todoを追加する】</p>
-
-        <form method="post" action="{{ action('TodosController@store', $post) }}">
-            {{ csrf_field() }}
-            <p>タスク：
-                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old    ('content') }}" style="width:350px;">
-                @if ($errors->has('content'))
-                <span class="error">{{ $errors->first('content') }}</span>
-                @endif
-            </p>
-
-            <p>期日：
-                <input type="date" name="due_date" value="{{ old('due_date') }}">
-                @if ($errors->has('due_date'))
-                <span class="error">{{ $errors->first('due_date') }}</span>
-                @endif
-            </p>
-
-            <select name="status" placeholder="enter status" value="{{ old('status') }}">
-                <option value=未着手>未着手</option>
-                <option value=進行中>進行中</option>
-                <option value=完了済み>完了済み</option>
-            </select>
-
-            <p>
-                <input type="submit" class="btn btn-info" value="Todoを追加">
-            </p>
         </form>
     </div>
 
   <div class="box">
   <span class="box-title">Comment</span>
+
+      <form method="post" action="{{ action('CommentsController@store', $post) }}">
+          {{ csrf_field() }}
+          <p>
+            <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}  " style="width:350px;">
+            @if ($errors->has('content'))
+            <span class="error">{{ $errors->first('content') }}</span>
+            @endif
+            <input type="submit" class="btn btn-info" value="コメントを追加">
+          </p>
+      </form>
 
       <table class="table">
           <thead>
@@ -109,31 +118,17 @@
           </thead>
 
           <tbody>
-          @forelse ($post->comments as $comment)
+          @forelse ($comment as $comment)
             <tr>
                 <td>{{ $comment->content }}</td>
                 <td>{{ $comment->created_at->format('Y-m-d') }}</td>
-                <td><a href="{{ action('UsersController@show',$comment->user) }}"><img src="{{ $comment->user->image_path }}" class="comment_user_icon"></a></td>
+                <td><a href="{{ action('UsersController@show',$comment->user) }}"><img src="{{ $comment->user->image_path }}" class="comment_user_icon"></a><br>{{ $comment->user->name }}</td>
             </tr>
           @empty
           <td>コメントはまだありません</td>
           @endforelse
           </tbody>
       </table>
-
-      <form method="post" action="{{ action('CommentsController@store', $post) }}">
-          {{ csrf_field() }}
-          <p>
-            <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}  " style="width:350px;">
-            @if ($errors->has('content'))
-            <span class="error">{{ $errors->first('content') }}</span>
-            @endif
-          </p>
-
-          <p>
-              <input type="submit" class="btn btn-info" value="コメントを追加">
-          </p>
-      </form>
   </div>
 
     <script async defer

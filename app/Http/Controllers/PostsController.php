@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
+use App\Todo;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
 use Request as SearchRequest;
@@ -16,8 +18,19 @@ class PostsController extends Controller
     }
 
     public function show(Post $post){
+        $comment =  Comment::where('post_id',$post->id)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-        return view('posts.show')->with('post',$post);
+        $todo =  Todo::where('post_id',$post->id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('posts.show')->with([
+            'post'=>$post, 
+            'comment'=>$comment,
+            'todo'=>$todo,
+            ]);
     }
 
     public function create(){
