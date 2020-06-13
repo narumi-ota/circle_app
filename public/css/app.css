@@ -180,7 +180,7 @@ h1 {
   max-height: 65px;
   color: #555;
   font-size: 16px;
-  background: #e0edff;
+  background: #7fffd4;
   border-radius: 10%;
 }
 
@@ -191,7 +191,7 @@ h1 {
   left: -30px;
   margin-top: -15px;
   border: 15px solid transparent;
-  border-right: 15px solid #e0edff;
+  border-right: 15px solid #7fffd4;
 }
 
 .speech_bubble_left p {
