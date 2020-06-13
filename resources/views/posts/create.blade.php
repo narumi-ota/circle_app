@@ -8,7 +8,7 @@
 
 <h1>新規立ち上げ</h1>
   
-    <form method="post" action="{{ url('/posts') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ url('/posts') }}">
     {{ csrf_field() }}
 
     <p>
