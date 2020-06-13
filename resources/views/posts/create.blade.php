@@ -4,8 +4,6 @@
 
 @section('content')
 
-<a href="{{ url('/posts') }}" class="header-menu"><< 戻る</a>
-
 <h1>新規立ち上げ</h1>
   
     <form method="post" action="{{ url('/posts') }}">
