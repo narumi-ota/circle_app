@@ -74,6 +74,8 @@ h1 {
   position: absolute;
   top: 0%;
   left: 72%;
+  width: 100px;
+  height: 100px;
 }
 
 .post_card_textbox{

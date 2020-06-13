@@ -5,10 +5,9 @@
     <div class="post_card">
         <div class="post_card_header">
             @if ($user->image_path)
-            <figure>
-                <img src="{{ $user->image_path }}" class="user_icon">
-                <figcaption>現在のプロフィール画像</figcaption>
-            </figure>
+            <div class="user_icon">
+                <img src="{{ $user->image_path }}" alt="user_icon">
+            </div>
             @endif
         
             @if ($user->message)
@@ -50,7 +49,8 @@
                 
                 <form method="post" action="/home/message" >
                     {{ csrf_field() }}
-                <input type="string" name="message" placeholder="ひとことメッセージ" value="{{ old('message') }}">
+                <input type="string" name="message" placeholder="ひとことメッセージ" class="form-control" 
+                style="margin-top: 20px;" value="{{ old('message') }}">
                 <p><input type="submit" value="ひとことを更新"class="btn btn-info"></p>
                 </form>
             </div>
