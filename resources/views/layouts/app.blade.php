@@ -55,18 +55,25 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="{{ url('/home') }}">
+                                    {{ __('マイページ') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ url('/posts') }}">
+                                    {{ __('すベてのサークル') }}
+                                    </a>
+                                
+                                    <a class="dropdown-item" href="{{ url('/users') }}">
+                                    {{ __('すべてのユーザー') }}
+                                    </a>
+
+                                    <hr>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ url('/posts') }}">
-                                        {{ __('すベてのサークル') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ url('/users') }}">
-                                        {{ __('すべてのユーザー') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
