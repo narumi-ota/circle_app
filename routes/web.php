@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::post('/home', 'HomeController@store');
+  Route::post('/home/message', 'HomeController@messageStore');
   Route::get('/posts','PostsController@index');
   Route::get('/posts/{post}','PostsController@show')->where('post','[0-9]+');
   Route::get('/posts/create','PostsController@create');

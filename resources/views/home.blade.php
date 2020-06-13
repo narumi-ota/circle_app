@@ -3,19 +3,22 @@
 @section('content')
 
     <div class="post_card">
-        <div class="post_card_header">{{ $user->name }} のプロフィール</div>
+        <div class="post_card_header">
+            @if ($user->image_path)
+            <figure>
+                <img src="{{ $user->image_path }}" class="user_icon">
+                <figcaption>現在のプロフィール画像</figcaption>
+            </figure>
+            @endif
+        
+            @if ($user->message)
+            <p>{{ $user->message }}</p>
+            @endif
+        </div>
+
             <div class="post_card_textbox">
         
-                @if ($user->image_path)
-                <figure>
-                    <img src="{{ $user->image_path }}" width="100px" height="100px">
-                    <figcaption>現在のプロフィール画像</figcaption>
-                </figure>
-                @endif
 
-                @if ($user->message)
-                <p>{{ $user->message }}</p>
-                @endif
                
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -39,16 +42,17 @@
                 </div>
                 @endif
                 
-                <p>▼プロフィールを更新</p>
                 <form method="post" action="/home" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                 <input type="file" name="image">
-
-                <input type="string" name="message" placeholder="ひとことメッセージ" value="{{ old('message') }}">
-
-                <input type="submit">
+                <input type="submit" value="画像を更新"class="btn btn-info">
                 </form>
-
+                
+                <form method="post" action="/home/message" >
+                    {{ csrf_field() }}
+                <input type="string" name="message" placeholder="ひとことメッセージ" value="{{ old('message') }}">
+                <p><input type="submit" value="ひとことを更新"class="btn btn-info"></p>
+                </form>
             </div>
         </div>
     </div>
