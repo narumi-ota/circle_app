@@ -39,7 +39,8 @@ class HomeController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
         $user->image_path = Storage::disk('s3')->url($path);
+        $user->message = $request->message;
         $user->save();
-        return redirect('home')->with('success', '新しいプロフィールを登録しました');
+        return redirect('home')->with('success', 'プロフィールを更新しました！');
     }
 }

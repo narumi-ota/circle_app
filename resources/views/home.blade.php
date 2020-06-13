@@ -12,6 +12,10 @@
                     <figcaption>現在のプロフィール画像</figcaption>
                 </figure>
                 @endif
+
+                @if ($user->message)
+                <p>{{ $user->message }}</p>
+                @endif
                
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -35,9 +39,13 @@
                 </div>
                 @endif
                 
-                <form method="POST" action="/home" enctype="multipart/form-data" >
+                <p>▼プロフィールを更新</p>
+                <form method="post" action="/home" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                 <input type="file" name="image">
+
+                <input type="string" name="message" placeholder="ひとことメッセージ" value="{{ old('message') }}">
+
                 <input type="submit">
                 </form>
 
