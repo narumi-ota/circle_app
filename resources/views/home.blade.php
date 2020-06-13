@@ -63,6 +63,7 @@
     <div class="post_card">
         <div class="post_card_header">{{ $user->name }} のサークル</div>
             <div class="post_card_textbox">
+            <a href="{{ url('/posts/create') }}" class="btn btn-light">新しいサークルを立ち上げる</a>
             @forelse ($posts as $post)
             <ul>
                 <li>

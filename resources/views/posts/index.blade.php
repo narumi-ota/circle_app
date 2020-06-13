@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1><a href="{{ url('/posts/create') }}" class="new_post">新しいサークルを立ち上げる</a></h1>
+<a href="{{ url('/posts/create') }}" class="new_post">新しいサークルを立ち上げる</a>
 
     <div class="search">
         <p>サークル名もしくは開催場所で検索</p>
