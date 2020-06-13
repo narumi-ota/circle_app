@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HomeRequest extends FormRequest
+class MessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,15 @@ class HomeRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048',
-            
+            'message' => 'required|max:24',
         ];
     }
 
+
     public function messages(){
         return [
-            'image.required' => '写真が選択されていません',
-            'image.file|image|mimes:jpeg,png,jpg,gif|max:2048' => '写真の読み込みに失敗しました',
+            'message.max' => '24文字以内で入力してください',
+            'message.required' => 'ひとことを入力してください',
         ];
     }
 }

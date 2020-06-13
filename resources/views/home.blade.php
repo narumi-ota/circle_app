@@ -43,11 +43,11 @@
                 </div>
                 @endif
                 
-                <p>▼プロフィール画像を追加</p>
+                <p>▼プロフィール画像を変更</p>
                 <form method="post" action="/home" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                 <input type="file" name="image">
-                <input type="submit" value="画像を更新"class="btn btn-info">
+                <input type="submit" value="画像を変更"class="btn btn-info">
                 </form>
                 
                 <form method="post" action="/home/message" >
