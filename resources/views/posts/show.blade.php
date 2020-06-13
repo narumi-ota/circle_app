@@ -16,8 +16,11 @@
 
     <div class="box">
         <p>開催場所：{{ $post->place }}</p>
+        
+        @if ($post->longitude)
         <p>地図：</p>
         <div id="target"></div>
+        @endif
     </div>
 
     <div class="box">
