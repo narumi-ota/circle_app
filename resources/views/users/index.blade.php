@@ -9,9 +9,9 @@
         <tbody>
         @foreach ($users as $user)
             <tr>
-                <td>
+                <td class="user_icon">
                     <a href="{{ action('UsersController@show',$user) }}">
-                    <img src="{{ $user->image_path }}" class="comment_user_icon" alt="user_icon">
+                    <img src="{{ $user->image_path }}" width="100px" height="100px" alt="user_icon">
                     <p>{{ $user->name }}</p>
                 </td>
                 <td>
