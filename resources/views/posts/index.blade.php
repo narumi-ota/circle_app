@@ -23,7 +23,7 @@
                 </div>
                 <div class="post_card_textbox">
                     <div class="user_icon">
-                    <img src="{{ $post->user->image_path }}" alt="user_icon">
+                    <img src="{{ $post->user->image_path }}" width="100px" height="100px" alt="user_icon">
                     </div>
                     <p>主催者： <a href="{{ action('UsersController@show',$post->user) }}">{{    $post->user->name }}  </a></p>
                     <p>開催場所：{{ mb_strimwidth($post->place, 0, 20, "...") }}</p>

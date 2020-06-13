@@ -6,7 +6,8 @@
         <div class="post_card_header">
             @if ($user->image_path)
             <div class="user_icon">
-                <img src="{{ $user->image_path }}" alt="user_icon">
+                <img src="{{ $user->image_path }}" width="100px" height="100px" alt="user_icon">
+                <p>現在のプロフィール画像</p>
             </div>
             @endif
         
