@@ -7,13 +7,14 @@
             @if ($user->image_path)
             <div class="user_icon">
                 <img src="{{ $user->image_path }}" width="100px" height="100px" alt="user_icon">
-                <p>現在のプロフィール画像</p>
             </div>
             @endif
         
+            <div class="speech_bubble">
             @if ($user->message)
             <p>{{ $user->message }}</p>
             @endif
+            </div>
         </div>
 
             <div class="post_card_textbox">
@@ -42,6 +43,7 @@
                 </div>
                 @endif
                 
+                <p>▼プロフィール画像を追加</p>
                 <form method="post" action="/home" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                 <input type="file" name="image">

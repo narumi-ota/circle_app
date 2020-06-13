@@ -136,3 +136,35 @@ h1 {
   height: 300px;
   margin: auto;
 }
+
+/* Homeページ */
+
+.speech_bubble {
+  position: relative;
+  display: inline-block;
+  min-width: 210px;
+  max-width: 210px;
+  min-height: 65px;
+  max-height: 65px;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 10%;
+}
+
+.speech_bubble:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #e0edff;
+}
+
+.speech_bubble p {
+  font-size: 15px;
+  margin: 5px;
+  padding: 5px;
+  word-break: break-all;
+}
