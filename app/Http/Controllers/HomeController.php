@@ -34,7 +34,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(3);
         
-        $recent_post = Post::limit(3)
+        $recent_post = Post::limit(2)
             ->orderBy('created_at', 'desc') 
             ->get();
         
