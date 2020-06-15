@@ -29,7 +29,7 @@
         <form method="post" action="{{ action('TodosController@store', $post) }}">
             {{ csrf_field() }}
             <p>タスク
-                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old    ('content') }}" style="width:350px;">
+                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old('content') }}" style="width:350px;">
                 @if ($errors->has('content'))
                 <span class="error">{{ $errors->first('content') }}</span>
                 @endif
@@ -41,14 +41,15 @@
                 <span class="error">{{ $errors->first('due_date') }}</span>
                 @endif
 
-                <select name="status" placeholder="enter status" value="{{ old('status') }}">
-                    <option value=未着手>未着手</option>
-                    <option value=進行中>進行中</option>
-                    <option value=完了済み>完了済み</option>
+                <select name="status" value="{{ old('status') }}">
+                    <option value="未着手">未着手</option>
+                    <option value="進行中">進行中</option>
+                    <option value="完了済み">完了済み</option>
                 </select>
 
                 <input type="submit" class="btn btn-info" value="Todoを追加">
             </p>
+        </form>
         
         <table class="table">
             <thead>
@@ -70,7 +71,7 @@
                         <div class="col-4">
                             @if ($todo->status == '完了済み')
                             <form action="{{ route('todo.destroy', $todo->id) }}" method="post">
-                              <input type="hidden" name="room_id" value="{{$todo->post_id}}">
+                              <input type="hidden" name="status">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger btn-sm">削除する</button>
@@ -78,8 +79,8 @@
                             @else
                             <form action="{{ route('todo.change', $todo->id) }}" method="get">
                               @csrf
-                              <input type="hidden" name="post_id" value="{{$todo->post_id}}">
-                              <button type="submit" class="btn btn-info btn-sm">更新</button>
+                              <input type="hidden" name="status">
+                              <button type="submit" class="btn btn-warning btn-sm">更新</button>
                             </form>
                             @endif
                         </div>
@@ -90,6 +91,9 @@
                     <td>Todoはまだありません</td>
                 </tr>
                 @endforelse
+                <div class="justify-content-center mb-5">
+                    {{ $todo->links() }}
+                </div> 
             </tbody>
         </table>
 

@@ -10,8 +10,12 @@ use App\Todo;
 class TodosController extends Controller
 {
     public function store(TodoRequest $request,Post $post){
-        $todo = new Todo(['content'=> $request->content, 'due_date'=> $request->due_date, 'status'=> $request->status]);
-        $post->todos()->save($todo);
+        $todo = new Todo();
+        $todo->content = $request->content;
+        $todo->due_date = $request->due_date;
+        $todo->status = $request->status;
+        $todo->post_id = $post->id;
+        $todo->save();
         return redirect()-> action('PostsController@show', $post);
     }
 
@@ -20,7 +24,7 @@ class TodosController extends Controller
         return redirect()->back();
     }
 
-    public function change(Todo $todo, Request $request){
+    public function change(Todo $todo, Request $request, Post $post){
       if($todo->status == '未着手') {
         $todo->status = '進行中';
       }elseif ($todo->status == '進行中') {
@@ -28,6 +32,6 @@ class TodosController extends Controller
       }
       $todo->save();
 
-      return redirect()->action('PostsController@show', ['id' => $request->post_id]);
+      return redirect()->back();
     }
 }

@@ -14,7 +14,7 @@ class PostsController extends Controller
 {
     public function index(){
         $posts = Post::All()
-            ->orderBy('created_at', 'asc')
+            ->orderBy('created_at', 'desc')
             ->paginate(4);
         return view('posts.index')->with('posts',$posts);
     }
@@ -22,11 +22,11 @@ class PostsController extends Controller
     public function show(Post $post){
         $comment =  Comment::where('post_id',$post->id)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(4);
 
         $todo =  Todo::where('post_id',$post->id)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(4);
 
         return view('posts.show')->with([
             'post'=>$post, 
