@@ -83,7 +83,7 @@
             <div class="post_card_textbox">
             @foreach ($recent_post as $rpost)
             <ul>
-                <li><a href="{{ action('PostsController@show',$rpost) }}">{{ $rpost->content}}</a>
+                <li><a href="{{ action('PostsController@show',$rpost) }}">{{ $rpost->title}}</a>
                     <a href="{{ action('UsersController@show',$rpost->user) }}">
                     主催者:<img src="{{ $rpost->user->image_path }}" class="comment_user_icon" alt="user_icon">
                     </a>
