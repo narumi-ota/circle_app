@@ -91,9 +91,6 @@
                     <td>Todoはまだありません</td>
                 </tr>
                 @endforelse
-                <div class="justify-content-center mb-5">
-                    {{ $todo->links() }}
-                </div> 
             </tbody>
         </table>
 

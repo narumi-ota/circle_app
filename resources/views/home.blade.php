@@ -74,7 +74,7 @@
                 @endforelse
                 <div class="justify-content-center mb-5">
                     {{ $posts->links() }}
-                </div>           
+                </div>
         </div>
     </div>
 
