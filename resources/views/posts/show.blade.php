@@ -26,7 +26,7 @@
     <div class="box">
         <span class="box-title">Todo</span>
 
-        <form method="post" action="{{ action('TodosController@store', $post) }}">
+        <form method="post" action="{{ route('todo.store', $post) }}">
             {{ csrf_field() }}
             <p>タスク
                 <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old('content') }}" style="width:350px;">
@@ -70,17 +70,17 @@
                     <td>
                         <div class="col-4">
                             @if ($todo->status == '完了済み')
-                            <form action="{{ route('todo.destroy', $todo->id) }}" method="post">
-                              <input type="hidden" name="status">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger btn-sm">削除する</button>
+                            <form method="post" action="{{ route('todo.destroy', $todo->id) }}">
+                                <input type="hidden" name="status">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">削除する</button>
                             </form>
                             @else
-                            <form action="{{ route('todo.change', $todo->id) }}" method="get">
-                              @csrf
-                              <input type="hidden" name="status">
-                              <button type="submit" class="btn btn-warning btn-sm">更新</button>
+                            <form  method="get" action="{{ route('todo.change', $todo->id) }}">
+                                @csrf
+                                <input type="hidden" name="status">
+                                <button type="submit" class="btn btn-warning btn-sm">更新</button>
                             </form>
                             @endif
                         </div>
@@ -93,22 +93,20 @@
                 @endforelse
             </tbody>
         </table>
-
-        </form>
     </div>
 
   <div class="box">
   <span class="box-title">Comment</span>
 
-      <form method="post" action="{{ action('CommentsController@store', $post) }}">
-          {{ csrf_field() }}
-          <p>
+      <form method="post" action="{{ route('comment.store', $post) }}">
+            {{ csrf_field() }}
+            <p>
             <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}  " style="width:350px;">
             @if ($errors->has('content'))
             <span class="error">{{ $errors->first('content') }}</span>
             @endif
             <input type="submit" class="btn btn-info" value="コメントを追加">
-          </p>
+            </p>
       </form>
 
       <table class="table">

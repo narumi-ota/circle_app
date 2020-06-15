@@ -24,7 +24,7 @@ class TodosController extends Controller
         return redirect()->back();
     }
 
-    public function change(Todo $todo, Request $request, Post $post){
+    public function change(Todo $todo, Request $request){
       if($todo->status == '未着手') {
         $todo->status = '進行中';
       }elseif ($todo->status == '進行中') {

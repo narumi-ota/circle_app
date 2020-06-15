@@ -22,11 +22,11 @@ class PostsController extends Controller
     public function show(Post $post){
         $comment =  Comment::where('post_id',$post->id)
             ->orderBy('created_at', 'desc')
-            ->paginate(4);
+            ->get();
 
         $todo =  Todo::where('post_id',$post->id)
             ->orderBy('created_at', 'desc')
-            ->paginate(4);
+            ->get();
 
         return view('posts.show')->with([
             'post'=>$post, 
