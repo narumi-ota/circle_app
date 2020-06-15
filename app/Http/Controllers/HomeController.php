@@ -29,10 +29,20 @@ class HomeController extends Controller
      */
     public function index(){
         $user = Auth::user();
+
         $posts = Post::where('user_id', $user->id) 
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+        
+        $recent_post = Post::limit(3)
             ->orderBy('created_at', 'desc') 
-            ->paginate(3); 
-        return view('home')->with(['posts'=>$posts, 'user'=>$user]);
+            ->get();
+        
+            return view('home')->with([
+            'posts'=>$posts, 
+            'user'=>$user,
+            'recent_post'=>$recent_post,
+            ]);
     }
 
     public function store(HomeRequest $request){

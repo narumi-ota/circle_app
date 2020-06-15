@@ -13,19 +13,20 @@ use Request as SearchRequest;
 class PostsController extends Controller
 {
     public function index(){
-        $posts = Post::orderBy('created_at', 'desc')
-        ->paginate(4);
+        $posts = Post::All()
+            ->orderBy('created_at', 'asc')
+            ->paginate(4);
         return view('posts.index')->with('posts',$posts);
     }
 
     public function show(Post $post){
         $comment =  Comment::where('post_id',$post->id)
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $todo =  Todo::where('post_id',$post->id)
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('posts.show')->with([
             'post'=>$post, 
