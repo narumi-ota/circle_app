@@ -64,9 +64,10 @@
                       <a href="{{ action('PostsController@show',$post) }}">{{ $post->title }}</a>
                       <a href="{{ action('PostsController@edit',$post) }}">[内容を編集]</a>
                       <a href="#" data-id="{{ $post->id }}" class="del">[削除]</a>
-                      <form method="post" action="{{ url('/posts', $post->id ) }}" id="form_{{ $post->id }}">
+                      <form method="post" action="{{ route('post.destroy', $post->id ) }}" id="form_{{ $post->id }}">
                       {{ csrf_field() }}
-                      {{ method_field('delete') }}
+                      {{ method_field('DELETE') }}
+                      </form>
                     </li>
                 </ul>
                 @empty

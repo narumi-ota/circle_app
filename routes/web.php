@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/posts/{post}/edit','PostsController@edit');
   Route::patch('/posts/{post}','PostsController@update');
   Route::get('posts', 'PostsController@getSearch');
-  Route::delete('/posts/{post}','PostsController@destroy');
+  Route::delete('/posts/{post}','PostsController@destroy')->name('post.destroy');
   Route::post('/posts/{post}/todos','TodosController@store')->name('todo.store');
   Route::post('/posts/{post}/comments','CommentsController@store')->name('comment.store');
   Route::get('todo/{todo}', 'TodosController@change')->name('todo.change');
