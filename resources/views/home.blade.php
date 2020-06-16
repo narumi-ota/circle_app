@@ -26,7 +26,13 @@
             <input type="file" name="image">
             <input type="submit" value="画像を変更"class="btn btn-info">
             </form>
-
+            
+            <form method="post" action="/home/message" >
+                {{ csrf_field() }}
+            <input type="string" name="message" placeholder="ひとことメッセージ(24文字以内)" class="form-control" 
+            style="margin-top: 20px;" value="{{ old('message') }}">
+            <p><input type="submit" value="ひとことを更新"class="btn btn-info"></p>
+            </form>
         </div>
     </div>
 

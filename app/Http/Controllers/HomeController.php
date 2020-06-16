@@ -45,7 +45,7 @@ class HomeController extends Controller
             ]);
     }
 
-    public function store(Request $request){
+    public function store(HomeRequest $request){
         $user = Auth::user();
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
