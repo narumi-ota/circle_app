@@ -10,11 +10,11 @@
         
             @if ($user->message)
             <div class="speech_bubble">
-            <p>{{ $user->message }}</p>
+                <p>{{ $user->message }}</p>
             </div>
             @else
             <div class="speech_bubble">
-            <p>ひとことメッセージを登録してみよう！</p>
+                <p>ひとことメッセージを登録してみよう！</p>
             </div>
             @endif
         </div>
