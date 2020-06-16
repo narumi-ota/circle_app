@@ -95,47 +95,56 @@
         </table>
     </div>
 
-  <div class="box">
-  <span class="box-title">Comment</span>
+    <div class="box">
+    <span class="box-title">Comment</span>
 
-      <form method="post" action="{{ route('comment.store', $post) }}">
-            {{ csrf_field() }}
-            <p>
-            <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}  " style="width:350px;">
-            @if ($errors->has('content'))
-            <span class="error">{{ $errors->first('content') }}</span>
-            @endif
-            <input type="submit" class="btn btn-info" value="コメントを追加">
-            </p>
-      </form>
+        <form method="post" action="{{ route('comment.store', $post) }}">
+              {{ csrf_field() }}
+              <p>
+                  <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}"   style="width:350px;">
+                  @if ($errors->has('content'))
+                  <span class="error">{{ $errors->first('content') }}</span>
+                  @endif
+                  <input type="submit" class="btn btn-info" value="コメントを追加">
+              </p>
+        </form>
 
-      <table class="table">
-          <thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>コメント</th>
+                    <th>投稿日</th>
+                    <th>投稿者</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            @forelse ($comment as $comment)
               <tr>
-                  <th>コメント</th>
-                  <th>投稿日</th>
-                  <th>投稿者</th>
+                    <td>{{ $comment->content }}</td>
+                    <td>{{ $comment->created_at->format('Y-m-d') }}</td>
+                    <td>
+                        <a href="{{ action('UsersController@show',$comment->user) }}">
+                            <img src="{{ $comment->user->image_path }}" class="comment_user_icon" alt="user_icon">
+                        </a>
+                        <br>{{ $comment->user->name }}
+                    </td>
+                    @if( $comment->user == Auth::user())
+                    <td>
+                        <form method="post" action="{{ route('comment.destroy',$comment->id) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <input type="submit" value="削除" class="btn btn-light">
+                        </form>
+                    </td>
+                    @endif
               </tr>
-          </thead>
-
-          <tbody>
-          @forelse ($comment as $comment)
-            <tr>
-                <td>{{ $comment->content }}</td>
-                <td>{{ $comment->created_at->format('Y-m-d') }}</td>
-                <td>
-                    <a href="{{ action('UsersController@show',$comment->user) }}">
-                        <img src="{{ $comment->user->image_path }}" class="comment_user_icon" alt="user_icon">
-                    </a>
-                    <br>{{ $comment->user->name }}
-                </td>
-            </tr>
-          @empty
-          <td>コメントはまだありません</td>
-          @endforelse
-          </tbody>
-      </table>
-  </div>
+            @empty
+            <td>コメントはまだありません</td>
+            @endforelse
+            </tbody>
+        </table>
+    </div>
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?language=ja&

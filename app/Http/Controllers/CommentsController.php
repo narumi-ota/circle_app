@@ -17,4 +17,15 @@ class CommentsController extends Controller
         $comment->save();
         return view('posts.show')->with('post',$post);
     }
+
+    public function show(Post $post){
+        $comments = Comment::where('post_id', $post->id)
+            ->get();
+        return view('comments.show')->with('comments',$comments);
+    }
+
+    public function destroy(Comment $comment, Request $request){
+         $comment->delete();
+         return redirect()->back();   
+    }
 }
