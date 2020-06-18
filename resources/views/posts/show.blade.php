@@ -108,7 +108,6 @@
                   <input type="submit" class="btn btn-info" value="コメントを追加">
               </p>
         </form>
-
         <table class="table">
             <thead>
                 <tr>

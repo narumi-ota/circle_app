@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TodoRequest;
 use App\Post;
 use App\Todo;
 
 class TodosController extends Controller
 {
-    public function store(Request $request,Post $post){
+    public function store(TodoRequest $request,Post $post){
         $todo = new Todo();
         $todo->content = $request->content;
         $todo->due_date = $request->due_date;
         $todo->status = $request->status;
         $todo->post_id = $post->id;
         $todo->save();
-        return redirect()-> action('PostsController@show', $post);
+        return redirect()->back();
     }
 
     public function destroy(Todo $todo, Request $request){

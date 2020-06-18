@@ -21,7 +21,7 @@
 
         <div class="post_card_textbox">
             <p>▼プロフィール画像を変更</p>
-            <form method="post" action="/home" enctype="multipart/form-data" >
+            <form method="post" action="/home" enctype="multipart/form-data">
                 {{ csrf_field() }}
             <input type="file" name="image">
             <input type="submit" value="画像を変更"class="btn btn-info">
@@ -33,6 +33,9 @@
             style="margin-top: 20px;" value="{{ old('message') }}">
             <p><input type="submit" value="ひとことを更新"class="btn btn-info"></p>
             </form>
+            @if ($errors->has('message'))
+                <span class="error">{{ $errors->first('message') }}</span>
+            @endif
         </div>
     </div>
 
