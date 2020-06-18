@@ -4,9 +4,15 @@
 
     <div class="post_card">
         <div class="post_card_header">
+            @if($user->image_path)
             <div class="user_icon">
                 <img src="{{ $user->image_path }}" width="100px" height="100px" alt="user_icon">
             </div>
+            @else
+            <div class="user_icon">
+                <img src="public/profile_images/1.jpg" width="100px" height="100px" alt="user_icon">
+            </div>
+            @endif
         
             @if ($user->message)
             <div class="speech_bubble">

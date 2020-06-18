@@ -30,7 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::delete('comments/{comment}','CommentsController@destroy')->name('comment.destroy');
   Route::get('todo/{todo}', 'TodosController@change')->name('todo.change');
   Route::delete('todos/{todo}','TodosController@destroy')->name('todo.destroy');
-  Route::get('join/{join}', 'JoinsController@change')->name('join.change');
+  Route::get('/posts/{post}/join', 'JoinsController@change')->name('join.change');
+  Route::delete('join/{join}', 'JoinsController@destroy')->name('join.destory');
   Route::get('/users/{user}','UsersController@show');
   Route::get('/users','UsersController@index');
 });

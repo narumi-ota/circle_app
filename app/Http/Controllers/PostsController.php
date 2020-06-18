@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use App\Todo;
+use App\Join;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Request as SearchRequest;
 
 class PostsController extends Controller
@@ -28,10 +30,31 @@ class PostsController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        $join = $post->joins()
+            ->get();
+        
+        $join_count = $join->count();
+
+        $join_id = $post->joins()
+            ->select(['user_id'])
+            ->get();
+        
+        foreach($join_id as $id){
+            $ids[] = $id->user_id;
+        }
+        
+        $user = Auth::user();
+        
+        $joined = in_array($user->id,$ids);
+
         return view('posts.show')->with([
-            'post'=>$post, 
+            'post'=>$post,
             'comment'=>$comment,
             'todo'=>$todo,
+            'join' =>$join,
+            'join_count' =>$join_count,
+            'joined'=>$joined,
+            'ids'=>$ids,
             ]);
     }
 

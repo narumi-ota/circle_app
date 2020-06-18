@@ -96,7 +96,35 @@
     </div>
 
     <div class="box">
-    <span class="box-title">Comment</span>
+    <span class="box-title">参加者:{{ $join_count }}名</span>
+        @if($joined)
+            <form  method="post" action="{{ route('join.destory', $post ) }}">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-warning btn-sm">参加をやめる</button>
+            </form>
+        @else
+        <div class="col-4">
+            <form  method="get" action="{{ route('join.change', $post) }}">
+                @csrf
+                <input type="hidden" name="status" value="2">
+                <button type="submit" class="btn btn-light btn-sm">参加する</button>
+            </form>
+        </div>
+        @endif
+
+        @foreach ($join as $join)
+            <p>
+                <a href="{{ action('UsersController@show',$join->user) }}">
+                    <img src="{{ $join->user->image_path }}" class="comment_user_icon" alt="user_icon">
+                </a>
+                <br>{{ $join->user->name }}
+            </p>
+        @endforeach
+    </div>
+
+    <div class="box">
+    <span class="box-title">コメント</span>
 
         <form method="post" action="{{ route('comment.store', $post) }}">
               {{ csrf_field() }}
