@@ -26,6 +26,9 @@
             <input type="file" name="image">
             <input type="submit" value="画像を変更"class="btn btn-info">
             </form>
+            @if ($errors->has('image'))
+                <span class="error">{{ $errors->first('image') }}</span>
+            @endif
             
             <form method="post" action="/home/message" >
                 {{ csrf_field() }}

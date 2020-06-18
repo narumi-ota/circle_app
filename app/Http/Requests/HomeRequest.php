@@ -31,6 +31,7 @@ class HomeRequest extends FormRequest
     public function messages(){
         return [
             'image.required' => '写真が選択されていません',
+            'image.max' => '写真の容量が大きすぎます',
         ];
     }
 }
