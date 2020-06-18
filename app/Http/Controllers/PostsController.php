@@ -54,7 +54,6 @@ class PostsController extends Controller
             'join' =>$join,
             'join_count' =>$join_count,
             'joined'=>$joined,
-            'ids'=>$ids,
             ]);
     }
 
