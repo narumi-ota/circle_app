@@ -20,9 +20,9 @@ class PostsController extends Controller
     }
 
     public function show(Post $post){
-        $comment =  Comment::where('post_id',$post->id)
+        $comment =  $post->comments()
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(4);
 
         $todo =  Todo::where('post_id',$post->id)
             ->orderBy('created_at', 'desc')

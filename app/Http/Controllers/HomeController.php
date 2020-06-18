@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\HomeRequest;
-use App\Http\Requests\MessageRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
@@ -45,7 +43,7 @@ class HomeController extends Controller
             ]);
     }
 
-    public function store(HomeRequest $request){
+    public function store(Request $request){
         $user = Auth::user();
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
@@ -53,7 +51,7 @@ class HomeController extends Controller
         return redirect('home')->with('success', 'プロフィールを更新しました！');
     }
 
-    public function messageStore(MessageRequest $request){
+    public function messageStore(Request $request){
         $user = Auth::user();
         $user->message = $request->message;
         $user->save();
