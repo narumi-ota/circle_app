@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
 use App\User;
-use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function store(CommentRequest $request,Post $post){
+    public function store(Request $request,Post $post){
         $comment = new Comment();
         $comment->content = $request->content;
         $comment->user_id = $request->user()->id;

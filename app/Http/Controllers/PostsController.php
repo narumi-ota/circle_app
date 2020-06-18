@@ -24,7 +24,7 @@ class PostsController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(4);
 
-        $todo =  Todo::where('post_id',$post->id)
+        $todo =  $post->todos()
             ->orderBy('created_at', 'desc')
             ->get();
 

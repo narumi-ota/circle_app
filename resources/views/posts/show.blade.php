@@ -144,6 +144,7 @@
             @endforelse
             </tbody>
         </table>
+        
     </div>
 
     <script async defer
