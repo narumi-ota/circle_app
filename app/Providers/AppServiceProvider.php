@@ -27,9 +27,4 @@ class AppServiceProvider extends ServiceProvider
             \DB::statement(\DB::raw('PRAGMA foreign_keys=1'));
         }
     }
-
-    public function boot(UrlGenerator $url) 
-    {
-    $url->forceScheme('https');
-    }
 }
