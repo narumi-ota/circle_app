@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h1>マイページ</h1>
+
     <div class="post_card">
         <div class="post_card_header">
             @if($user->image_path)

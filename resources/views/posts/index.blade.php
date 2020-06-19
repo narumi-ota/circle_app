@@ -14,6 +14,8 @@
     	  {{ Form::close() }}
     </div>
 
+    <h1>すべてのサークル</h1>
+
     <ul class="clearfix">
         @forelse ($posts as $post)
         <li>
