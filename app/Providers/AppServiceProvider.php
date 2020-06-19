@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
             \DB::statement(\DB::raw('PRAGMA foreign_keys=1'));
         }
 
-        if (\App::environment('production')) {
+        if (env('APP_ENV') !== 'local') {
             \URL::forceScheme('https');
         }
     }
