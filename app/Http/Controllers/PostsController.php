@@ -35,25 +35,12 @@ class PostsController extends Controller
         
         $join_count = $join->count();
 
-        $join_id = $post->joins()
-            ->select(['user_id'])
-            ->get();
-        
-        foreach($join_id as $id){
-            $ids[] = $id->user_id;
-        }
-        
-        $user = Auth::user();
-        
-        $joined = in_array($user->id,$ids);
-
         return view('posts.show')->with([
             'post'=>$post,
             'comment'=>$comment,
             'todo'=>$todo,
             'join' =>$join,
             'join_count' =>$join_count,
-            'joined'=>$joined,
             ]);
     }
 

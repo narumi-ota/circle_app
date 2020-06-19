@@ -17,13 +17,10 @@ class JoinsController extends Controller
         $join->save();
   
         return redirect()->back();
-      }
+    }
     
-      public function destroy(Request $request,Post $post){
-        $use = $user = Auth::user();
-        $join = Join::where('post_id',$post->id)
-        ->where('user_id',$user->id);
+    public function destroy(Request $request,Join $join){
         $join->delete();
-        return redirect()->back(); 
-      }
+        return redirect()->back();
+    }
 }
