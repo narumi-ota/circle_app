@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if (\DB::getDriverName() === 'sqlite'){
             \DB::statement(\DB::raw('PRAGMA foreign_keys=1'));
-            \URL::forceSchema('https');
+            \URL::forceScheme('https');
         }
     }
 }
