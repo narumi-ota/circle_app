@@ -38,7 +38,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc') 
             ->get();
         
-            return view('home')->with([
+        return view('home')->with([
             'posts'=>$posts, 
             'user'=>$user,
             'recent_post'=>$recent_post,
