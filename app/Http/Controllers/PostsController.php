@@ -68,6 +68,8 @@ class PostsController extends Controller
     public function update(PostRequest $request, Post $post){
         $post->title = $request->title;
         $post->content = $request->content;
+        $post->longitude = $request->longitude;
+        $post->latitude = $request->latitude;
         $post->save();
         return redirect('/home');
     }
