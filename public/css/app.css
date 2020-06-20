@@ -94,7 +94,7 @@ h1 {
   padding: 10px;
   border: solid 3px #62c1ce;
   background-color: #fff;
-  width: 80%;
+  width: 100%;
 }
 
 .box .box-title {
@@ -207,4 +207,46 @@ h1 {
   border-radius: 50%;
 }
 
+/* 表 */
 
+@media screen and (max-width: 600px) {
+  
+  table {
+    border: 0;
+    width:100%
+  }
+
+  table th{
+    background-color: #eee;
+    display: block;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+ 
+  table td {
+    display: inline;
+    font-size: 15px;
+    text-align: right;
+    position: relative;
+    padding-top: 5px;
+  }
+  
+  table td::before {
+    position: absolute;
+    left: 10px;
+  }
+
+  .none {
+    display:none;
+  }
+
+}

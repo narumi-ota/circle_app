@@ -29,7 +29,7 @@
         <form method="post" action="{{ route('todo.store', $post) }}">
             {{ csrf_field() }}
             <p>タスク
-                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old('content') }}" style="width:350px;">
+                <input type="text" name="content" placeholder="タスクを入力してください" value="{{ old('content') }}" style="width:300px;">
                 @if ($errors->has('content'))
                 <span class="error">{{ $errors->first('content') }}</span>
                 @endif
@@ -56,7 +56,6 @@
                 <tr>
                     <th>タスク</th>
                     <th>ステータス</th>
-                    <th>ステータス更新</th>
                     <th>期日</th>
                     <th>更新日</th>
                 </tr>
@@ -66,27 +65,24 @@
                 @forelse ($todo as $todo)
                 <tr>
                     <th>{{ $todo->content }}</th>
-                    <td>{{ $todo->status }}</td>
-                    <td>
-                        <div class="col-4">
-                            @if ($todo->status == '完了済み')
-                            <form method="post" action="{{ route('todo.destroy', $todo->id) }}">
-                                <input type="hidden" name="status">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">削除する</button>
-                            </form>
-                            @else
-                            <form  method="get" action="{{ route('todo.change', $todo->id) }}">
-                                @csrf
-                                <input type="hidden" name="status">
-                                <button type="submit" class="btn btn-warning btn-sm">更新</button>
-                            </form>
-                            @endif
-                        </div>
+                    <td>{{ $todo->status }}
+                        @if ($todo->status == '完了済み')
+                        <form method="post" action="{{ route('todo.destroy', $todo->id) }}">
+                            <input type="hidden" name="status">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">削除する</button>
+                        </form>
+                        @else
+                        <form  method="get" action="{{ route('todo.change', $todo->id) }}">
+                            @csrf
+                            <input type="hidden" name="status">
+                            <button type="submit" class="btn btn-warning btn-sm">更新</button>
+                        </form>
+                        @endif
                     </td>
-                    <td>{{ $todo->due_date }}</td>
-                    <td>{{ $todo->updated_at->format('Y-m-d') }}</td>
+                    <td class="none">{{ $todo->due_date }}</td>
+                    <td class="none">{{ $todo->updated_at->format('Y-m-d') }}</td>
                     @empty
                     <td>Todoはまだありません</td>
                 </tr>
@@ -131,7 +127,7 @@
         <form method="post" action="{{ route('comment.store', $post) }}">
               {{ csrf_field() }}
               <p>
-                  <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}"   style="width:350px;">
+                  <input type="text" name="content" placeholder="コメントを入力してください" value="{{ old  ('content') }}"   style="width:300px;">
                   @if ($errors->has('content'))
                   <span class="error">{{ $errors->first('content') }}</span>
                   @endif
@@ -142,22 +138,22 @@
             <thead>
                 <tr>
                     <th>コメント</th>
-                    <th>投稿日</th>
                     <th>投稿者</th>
+                    <th>投稿日</th>
                 </tr>
             </thead>
 
             <tbody>
             @forelse ($comment as $comment)
               <tr>
-                    <td>{{ $comment->content }}</td>
-                    <td>{{ $comment->created_at->format('Y-m-d') }}</td>
+                    <th>{{ $comment->content }}</th>
                     <td>
                         <a href="{{ action('UsersController@show',$comment->user) }}">
                             <img src="{{ $comment->user->image_path }}" class="comment_user_icon" alt="user_icon">
                         </a>
                         <br>{{ $comment->user->name }}
                     </td>
+                    <td>{{ $comment->created_at->format('Y-m-d') }}</td>
                     @if( $comment->user == Auth::user())
                     <td>
                         <form method="post" action="{{ route('comment.destroy',$comment->id) }}">
