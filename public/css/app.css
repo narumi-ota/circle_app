@@ -131,6 +131,7 @@ h1 {
 
 .participant_list {
   display: flex;
+  margin: 5px;
 }
 
 /* Google map */
