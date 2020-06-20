@@ -91,8 +91,8 @@
         </table>
     </div>
 
-    <div class="box">
-    <span class="box-title">参加者:{{ $join_count }}名</span>
+    <div class="participant_box">
+        <span class="participant_box_title">参加者:{{ $join_count }}名</span>
   
         <form  method="get" action="{{ route('join.change', $post) }}">
             {{ csrf_field() }}
@@ -100,7 +100,7 @@
         </form>
 
         @forelse ($join as $join) 
-            <box class="participant_list">
+            <div class="participant_list">
                 <a href="{{ action('UsersController@show',$join->user) }}">
                     <img src="{{ $join->user->image_path }}" class="comment_user_icon" alt="user_icon">
                 </a>
@@ -114,7 +114,7 @@
                 <button type="submit" class="btn btn-light btn-sm">参加をやめる</button>
                 </form>
                 @endif
-            </box>
+            </div>
         @empty
             <p>参加者はまだいません</p>
         @endforelse

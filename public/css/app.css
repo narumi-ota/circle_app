@@ -129,9 +129,35 @@ h1 {
   border-radius: 50%;
 }
 
-.participant_list {
+.participant_box {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: solid 3px #62c1ce;
+  background-color: #fff;
+  width: 100%;
   display: flex;
-  margin: 5px;
+}
+
+.participant_box_title {
+  position: absolute;
+  display: inline-block;
+  top: -27px;
+  left: -3px;
+  padding: 0 9px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 17px;
+  background: #62c1ce;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+.participant_box_item {
+  padding: 10px;
+  margin: 10px;
 }
 
 /* Google map */
