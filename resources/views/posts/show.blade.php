@@ -94,12 +94,19 @@
     <div class="box">
     <span class="box-title">参加者:{{ $join_count }}名</span>
   
-        @forelse ($join as $join)
-            <p>
+        <form  method="get" action="{{ route('join.change', $post) }}">
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-warning">参加する</button>
+        </form>
+
+        @forelse ($join as $join) 
+            <box class="participant_list">
                 <a href="{{ action('UsersController@show',$join->user) }}">
                     <img src="{{ $join->user->image_path }}" class="comment_user_icon" alt="user_icon">
                 </a>
+                <br>
                 {{ $join->user->name }}
+                <br>
                 @if( $join->user == Auth::user())
                 <form  method="post" action="{{ route('join.destory', $join->id ) }}">
                 {{ csrf_field() }}
@@ -107,17 +114,10 @@
                 <button type="submit" class="btn btn-light btn-sm">参加をやめる</button>
                 </form>
                 @endif
-            </p>
+            </box>
         @empty
             <p>参加者はまだいません</p>
         @endforelse
-        
-        <div class="col-4">
-            <form  method="get" action="{{ route('join.change', $post) }}">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-warning btn-sm">参加する</button>
-            </form>
-        </div>
     </div>
 
 
