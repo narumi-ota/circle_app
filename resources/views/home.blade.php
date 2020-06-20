@@ -80,7 +80,8 @@
             <div class="post_card_textbox">
             @foreach ($recent_post as $rpost)
             <ul>
-                <li><a href="{{ action('PostsController@show',$rpost) }}">{{ $rpost->title}}</a>
+                <li>
+                    <a href="{{ action('PostsController@show',$rpost) }}">{{ $rpost->title}}</a>
                     <a href="{{ action('UsersController@show',$rpost->user) }}">
                     主催者:<img src="{{ $rpost->user->image_path }}" class="comment_user_icon" alt="user_icon">
                     </a>
@@ -90,4 +91,21 @@
             </div>
         </div>
     </div>
+
+    <div class="post_card">
+        <div class="post_card_header">参加中のサークル</div>
+            <div class="post_card_textbox">
+            @foreach ($joined as $joined)
+            <ul>
+                <li>
+                    <a href="{{ action('PostsController@show',$joined->post->id ) }}">{{ $joined->post->title }}</a>
+                    <a href="{{ action('UsersController@show',$joined->post->user->id ) }}">
+                        主催者:<img src="{{ $joined->post->user->image_path }}" class="comment_user_icon" alt="user_icon">
+                    </a>
+                </li>
+            <ul>
+            @endforeach
+        </div>
+    </div>
+
 @endsection
