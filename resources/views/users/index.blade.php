@@ -10,9 +10,9 @@
         @foreach ($users as $user)
             <tr>
                 <td>
+                    {{ $user->name }}
                     <a href="{{ action('UsersController@show',$user) }}">
                     <img src="{{ $user->image_path }}" class="user_icon_index" alt="user_icon">
-                    <br>{{ $user->name }}
                 </td>
                 <td>
                     <div class="speech_bubble_left">
