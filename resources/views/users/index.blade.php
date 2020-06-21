@@ -12,7 +12,7 @@
                 <td>
                     <a href="{{ action('UsersController@show',$user) }}">
                     <img src="{{ $user->image_path }}" class="user_icon_index" alt="user_icon">
-                    <p>{{ $user->name }}</p>
+                    <br>{{ $user->name }}
                 </td>
                 <td>
                     <div class="speech_bubble_left">

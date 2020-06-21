@@ -100,7 +100,7 @@
         </form>
 
         @forelse ($join as $join) 
-            <div class="participant_list">
+            <div class="participant_box_item">
                 <a href="{{ action('UsersController@show',$join->user) }}">
                     <img src="{{ $join->user->image_path }}" class="comment_user_icon" alt="user_icon">
                 </a>
